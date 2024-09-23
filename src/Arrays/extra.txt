@@ -1,0 +1,90 @@
+// import java.util.Arrays;
+
+ import java.util.Scanner;
+
+ public class ArrayOperations {
+ public static void main(String[] args) {
+ Scanner sc = new Scanner(System.in);
+ int ch;
+ BubbleSort bbl = new BubbleSort();
+
+ ArrayBasic ab = new ArrayBasic();
+ do {
+ System.out.println("Enter Your choice");
+ System.out.println("1) Store The Array \t 2) Display The array \t 3) Search
+// Element in Array \n 4) Sort The array \t 0) Exit");
+ ch = sc.nextInt();
+
+ switch (ch) {
+ case 1:
+ ab.storeArray();
+ break;
+ case 2:
+ ab.displayArray();
+ break;
+ case 3:
+ System.out.println("Enter Element You want to Search");
+ int key;
+ key = sc.nextInt();
+ int res = ab.seqSearch(key);
+ if (res == -1) {
+ System.out.println("Element Not Found");
+ } else {
+ System.out.println("Element Found at index :" + (res + 1));
+ }
+ break;
+ case 4:
+ System.out.println("To sort by \nascending order enter A \nFor Descending
+// Enter D");
+ char AD = sc.next().charAt(0);
+ bbl.BubbleSort(ab.arr, AD, ab.size);
+ System.out.println("Sorted Array : ");
+ ab.displayArray();
+ break;
+ default:
+ System.out.println("Invalid na Brooooo choose wisely!");
+ break;
+
+ }
+ } while (ch != 0);
+ }
+
+ }
+
+ class ArrayBasic {
+ Scanner sc = new Scanner(System.in);
+ int[] arr;
+ static int size;
+
+
+ public ArrayBasic() {
+ System.out.println("Enter The Size for array");
+ size = sc.nextInt();
+ arr = new int[size];
+ }
+
+ public void storeArray() {
+ System.out.println("Enter " + size + " elements of array :");
+ for (int i = 0; i < size; i++) {
+ arr[i] = sc.nextInt();
+ }
+ }
+
+ public void displayArray() {
+ for (int i = 0; i < size; i++) {
+ System.out.print(" " + arr[i]);
+ }
+ System.out.println();
+ }
+
+ public int seqSearch(int key) {
+ for (int i = 0; i < size; i++) {
+ if (arr[i] == key) {
+ return i;
+ }
+ }
+ return -1;
+ }
+
+
+ }
