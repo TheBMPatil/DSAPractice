@@ -8,7 +8,10 @@ public class ArrayOperations {
         Scanner sc = new Scanner(System.in);
         int ch = -1; // Initialize ch to an invalid value
         char AD;
+        int userCH;
         ArrayBasic ab = new ArrayBasic();
+        ArrayBasic abTemp = new ArrayBasic();
+
         do {
             try {
                 System.out.println("Enter Your choice");
@@ -73,6 +76,38 @@ public class ArrayOperations {
                         System.out.println("Sorted Array : ");
                         ab.displayArray();
                         break;
+                    case 7:
+                        System.out.println("---------------------------------:::Array Math:::---------------------------------------");
+                        System.out.println("Enter Your Choice : ");
+                        System.out.println("1) Find MAX of Array \t2) Find Second MAX \t3) Find MIN \n4) Find Second Min \t5) Rotate Array \t6) Merge Two Sorted Arrays");
+                        userCH = sc.nextInt();
+                        ArrayMath arrayMath = new ArrayMath();
+                        switch (userCH) {
+                            case 1:
+                                System.out.println("Max of Array is :" + arrayMath.findMax(ab.arr));
+                                break;
+                            case 2:
+                                System.out.println("Second Max of Array is :" + arrayMath.secondMax(ab.arr));
+                                break;
+                            case 3:
+                                System.out.println("Rotate Array \nEnter 'L' for Left Shift \nEnter 'R' for Right Shift ");
+                                AD = sc.next().charAt(0);
+                                System.out.println("Enter How Many Steps Do you want to shift :");
+                                userCH = sc.nextInt();
+                                ab.arr = arrayMath.rotateArray(ab.arr, AD, userCH);
+                                break;
+                            case 4:
+                                break;
+                            case 5:
+                                break;
+                            case 6:
+                                break;
+                            default:
+                                System.out.println("Invalid Choice....!");
+                                break;
+                        }
+                        break;
+
                     case 0:
                         System.out.println("Exiting...");
                         break;

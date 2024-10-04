@@ -2,7 +2,7 @@ package Arrays;
 
 public class SelectionSort {
     public int[] selectSort(int[] arr, char order, int size) {
-        System.out.println("Inside Selection Sort");
+//        System.out.println("Inside Selection Sort");
         return switch (order) {
             case 'A' -> ascendingSort(arr, size);
             case 'D' -> descendingSort(arr, size);
