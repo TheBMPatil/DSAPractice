@@ -3,7 +3,7 @@ package Recursion;
 public class fibonacciOfN {
     public static void main(String[] args) {
         System.out.println("Fibonacci :" + fibo(6));
-    }
+     }
 
     static int fibo(int n) {
         if (n < 2) {
