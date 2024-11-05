@@ -1,11 +1,12 @@
 package Patterns;
 
+import javax.swing.plaf.IconUIResource;
 import java.util.Scanner;
 
 public class StarPatterns {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             int n;
             System.out.println("Enter No of Rows :");
             n = sc.nextInt();
@@ -22,7 +23,14 @@ public class StarPatterns {
 //            pattern14(n);
 //            pattern15(n);
 //            pattern16(n);
-            pattern17(n);
+//            pattern17(n);
+//            SIR(n);
+//            sapSidi();
+//            sIR(n);
+//            patternStarDoller(n);
+            hollowTriangle(n);
+
+
         }
 
     }
@@ -259,18 +267,143 @@ public class StarPatterns {
 //        A B C D E
 
         for (int i = 0; i < n; i++) {
-            char ch = 'A';
-            for (int j = 1; j <= n - i; j++) {
+            for (int j = 0; j <= n - i - 1; j++) {
                 System.out.print(" ");
             }
-            for (int k = 0; k <= i; k++) {
-                System.out.print(ch++ + " ");
+            int numOfChars = 2 * i + 1;
+            char ch = 'A';
+            for (int j = 0; j < numOfChars; j++) {
+                System.out.print(ch);
+                if (j < numOfChars / 2) {
+                    ch++;
+                } else {
+                    ch--;
+                }
             }
             System.out.println();
         }
     }
 
-}
 
+//    static void SIR(int n) {
+////        int cnt = 4;
+////        int s;
+////        for (int i = 0; i < (2 * n) - 1; i++) {
+////            for (int j = 0; j < (2 * n) - 1; j++) {
+////                s = i > j ? i : j;
+////                System.out.print(n - s + " ");
+////            }
+////            System.out.println("  ");
+////        }
+//        for (int i = 0; i < n; i++) {
+//            for (int j = 0; j < n; j++) {
+//
+//            }
+//        }
+//    }
+
+//    100 99 98 97 96 95 94 93 92 91
+//    81 82 83 84 85 86 87 88 89 90
+    //80 79 78 77 76 75 74 73 72 71
+    //61 62 63 64 65 66 67 68 69 70
+
+    static void sapSidi() {
+        int cnt = 100;
+        for (int i = 10; i > 0; i--) {
+//            if (i % 2 == 0)
+            int k = cnt;
+            if (i % 2 == 0) {
+                k = cnt;
+                for (int j = 0; j < 10; j++)
+                    System.out.print(k - j + "  ");
+            } else {
+                k = cnt - 10;
+                for (int j = 1; j <= 10; j++)
+                    System.out.print(k + j + "  ");
+
+            }
+
+
+//            else if (i % 2 != 0) {
+//                for (int j = 10; j > 0; j--)
+//                    System.out.print(cnt2 - j + "  ");
+//            }
+//            cnt2 = cnt2 - 10;
+            cnt = cnt - 10;
+
+            System.out.println();
+        }
+
+    }
+
+    /*
+       1 2 3 4 5 6 7
+    1  4 4 4 4 4 4 4
+    2  4 3 3 3 3 3 4
+    3  4 3 2 2 2 3 4
+    4  4 3 2 1 2 3 4
+    5  4 3 2 2 2 3 4
+    6  4 3 3 3 3 3 4
+    7  4 4 4 4 4 4 4
+
+
+    * */
+    static void sIR(int n) {
+        int cnt = n;
+
+        n = (n * 2) - 2;
+        for (int i = 0; i <= n; i++) {
+            for (int j = 0; j <= n; j++) {
+                int atIndex = cnt - Math.min(Math.min(i, j), Math.min(n - i, n - j));
+                System.out.print(atIndex + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    //    *****$
+//    ****$$
+//    ***$$$
+//    **$$$$
+//    *$$$$$
+//    $$$$$$
+    static void patternStarDoller(int n) {
+        for (int i = 0; i <= n; i++) {
+
+//            for (int j = 1; j <= n - i; j++) {
+//                System.out.print("* ");
+//            }
+//            for (int j = n; j >= n - i; j--) {
+//                System.out.print("$ ");
+//            }
+
+
+            for (int j = 0; j <= n; j++) {
+                if (j >= n - i) {
+                    System.out.print("$ ");
+                } else {
+                    System.out.print("* ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+
+    static void hollowTriangle(int n) {
+
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= i; j++) {
+                if (j == i || j == 1 || i == n) {
+                    System.out.print("* ");
+                } else {
+                    System.out.print("  ");
+                }
+            }
+            System.out.println();
+
+        }
+    }
+}
 
 

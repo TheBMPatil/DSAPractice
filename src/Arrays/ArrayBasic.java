@@ -7,6 +7,10 @@ class ArrayBasic {
     int[] arr;
     int size;
 
+    public ArrayBasic(int size) {
+        arr = new int[size];
+    }
+
     public ArrayBasic() {
         System.out.println("Enter The Size for array");
         while (true) {
@@ -50,5 +54,9 @@ class ArrayBasic {
             }
         }
         return -1;
+    }
+
+    public int length() {
+        return size;
     }
 }
