@@ -58,7 +58,12 @@ public class RemoveDuplicates {
             } else {
                 arr[count++] = arr[i];
             }
+
+            // if (arr[count] != arr[i]) {
+            // arr[++count] = arr[i];
+            // }
         }
         return count;
+//        return ++count;
     }
 }
