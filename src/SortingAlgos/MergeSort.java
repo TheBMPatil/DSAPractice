@@ -3,7 +3,7 @@ package SortingAlgos;
 public class MergeSort {
     public static void main(String[] args) {
 //        int size = 5;
-        int arr[] = {96, 12, 5, 80, 18};
+        int arr[] = {25,12,85,20,18,96};
         System.out.println("Original");
         displayArray(arr);
 

@@ -9,7 +9,10 @@ public class SLL {
     private Node tail;
     private int size;
 
+    //INSERT
     public void insertFirst(int val) {
+
+
         Node node = new Node(val);
         node.next = head;
         head = node;
@@ -18,6 +21,86 @@ public class SLL {
         }
         size += 1;
     }
+
+    public void insertLast(int val) {
+        if (tail == null) {
+            insertFirst(val);
+            return;
+        }
+        Node node = new Node(val);
+        tail.next = node;
+        tail = node;
+        size++;
+    }
+
+    public void insert(int val, int index) {
+        if (index > size) {
+            System.out.println("IndexOutOfBoundsException");
+            return;
+        }
+        if (index == 0) {
+            insertFirst(val);
+            return;
+        }
+        if (index == size) {
+            insertLast(val);
+            return;
+        }
+        Node current = head;
+        for (int i = 1; i < index; i++) {
+            current = current.next;
+        }
+        Node node = new Node(current.next, val);
+        current.next = node;
+        size++;
+    }
+
+    //DELETE
+    public int deleteFirst() {
+        int val = head.val;
+        head = head.next;
+        if (head == null) {
+            tail = null;
+        }
+        size--;
+        return val;
+    }
+
+    public int deleteLast() {
+        if (size <= 1) {
+            return deleteFirst();
+        }
+        Node secondLast = get(size - 2);
+        int val = tail.val;
+        tail = secondLast;
+        tail.next = null;
+
+        return val;
+    }
+
+    public int delete(int index) {
+        if (index == 0) {
+            return deleteFirst();
+        }
+        if (index == size - 1) {
+            return deleteLast();
+        }
+        Node prev = get(index - 1);
+        int val = prev.next.val;
+
+
+        prev.next = prev.next.next;
+        return val;
+    }
+
+    public Node get(int index) {
+        Node node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
 
     public void display() {
         Node temp = head;
