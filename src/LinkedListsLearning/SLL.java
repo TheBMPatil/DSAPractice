@@ -50,7 +50,7 @@ public class SLL {
         for (int i = 1; i < index; i++) {
             current = current.next;
         }
-        Node node = new Node(current.next, val);
+        Node node = new Node(val,current.next);
         current.next = node;
         size++;
     }
@@ -111,6 +111,22 @@ public class SLL {
         System.out.println("END");
     }
 
+
+    public void insertRec(int val, int index) {
+        head = insertRec(val, index, head);
+    }
+
+    private Node insertRec(int val, int index, Node node) {
+        if (index == 0) {
+            Node temp = new Node(val,node);
+            size++;
+//            temp.next = node;
+            return temp;
+        }
+        node.next = insertRec(val, index - 1, node.next);
+        return node;
+    }
+
     public SLL() {
         this.size = 0;
     }
@@ -123,7 +139,7 @@ public class SLL {
             this.val = val;
         }
 
-        public Node(Node next, int val) {
+        public Node( int val,Node next) {
             this.next = next;
             this.val = val;
         }
