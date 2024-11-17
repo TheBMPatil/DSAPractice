@@ -50,7 +50,7 @@ public class SLL {
         for (int i = 1; i < index; i++) {
             current = current.next;
         }
-        Node node = new Node(val,current.next);
+        Node node = new Node(val, current.next);
         current.next = node;
         size++;
     }
@@ -118,7 +118,7 @@ public class SLL {
 
     private Node insertRec(int val, int index, Node node) {
         if (index == 0) {
-            Node temp = new Node(val,node);
+            Node temp = new Node(val, node);
             size++;
 //            temp.next = node;
             return temp;
@@ -139,10 +139,89 @@ public class SLL {
             this.val = val;
         }
 
-        public Node( int val,Node next) {
+        public Node(int val, Node next) {
             this.next = next;
             this.val = val;
         }
+    }
+
+    //Remove Duplicates from sorted LL
+    public void removeDups() {
+        Node node = head;
+        while (node.next != null) {
+            if (node.val == node.next.val) {
+                node.next = node.next.next;
+                size--;
+            } else {
+                node = node.next;
+            }
+        }
+        tail = node;
+        tail.next = null;
+    }
+
+//Merge Sorted LL
+
+    public static SLL mergeTwo(SLL first, SLL second) {
+        Node f = first.head;
+        Node s = second.head;
+        SLL merged = new SLL();
+        while (f != null && s != null) {
+            if (f.val < s.val) {
+                merged.insertLast(f.val);
+                f = f.next;
+            } else {
+                merged.insertLast(s.val);
+                s = s.next;
+            }
+        }
+
+        while (f != null) {
+            merged.insertLast(f.val);
+            f = f.next;
+        }
+        while (s != null) {
+            merged.insertLast(s.val);
+            s = s.next;
+        }
+
+
+        return merged;
+    }
+
+    public static void main(String[] args) {
+        SLL first = new SLL();
+        SLL second = new SLL();
+        first.insertLast(10);
+        first.insertLast(13);
+        first.insertLast(15);
+        first.insertLast(16);
+        first.insertLast(199);
+
+        second.insertLast(14);
+        second.insertLast(18);
+        second.insertLast(24);
+        second.insertLast(74);
+
+        first.display();
+        second.display();
+
+        SLL ans  = mergeTwo(first,second);
+
+        ans.display();
+
+//        list.insertLast(1);
+//        list.insertLast(1);
+//        list.insertLast(1);
+//        list.insertLast(2);
+//        list.insertLast(2);
+//        list.insertLast(2);
+//        list.insertLast(3);
+//        list.insertLast(3);
+//        list.insertLast(4);
+//        list.display();
+//        list.removeDups();
+//        list.display();
     }
 
 
