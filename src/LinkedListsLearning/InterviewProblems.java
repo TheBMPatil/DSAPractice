@@ -1,8 +1,8 @@
 package LinkedListsLearning;
 
-public class LLCycles {
+public class InterviewProblems {
 
-
+    //If there is cycle or not ??
     public boolean hasCycle(ListNode head) {
         ListNode fast = head;
         ListNode slow = head;
@@ -16,6 +16,8 @@ public class LLCycles {
         }
         return false;
     }
+
+    //What is the length of cycle
 
     public int lengthCycle(ListNode head) {
         ListNode fast = head;
@@ -38,6 +40,7 @@ public class LLCycles {
         return 0;
     }
 
+    //Cycle start
     public ListNode detectCycle(ListNode head) {
         int length = 0;
 
@@ -74,7 +77,23 @@ public class LLCycles {
         return s;
     }
 
-    class ListNode {
+
+    //Find Middle
+
+    public ListNode middleNode(ListNode head) {
+        ListNode s = head;
+        ListNode f = head;
+
+        while (f != null && f.next != null) {
+            s = s.next;
+            f = f.next.next;
+        }
+
+        return s;
+    }
+//Class Structure for ListNode
+
+    public class ListNode {
         int val;
         ListNode next;
 
