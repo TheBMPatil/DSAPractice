@@ -189,14 +189,54 @@ public class SLL {
         return merged;
     }
 
+    //Recursive bubble sort on linkedlist
+    public void bubbleSort() {
+        bubbleSort(size - 1, 0);
+    }
+
+    private void bubbleSort(int row, int col) {
+        if (row == 0) {
+            return;
+        }
+
+        if (col < row) {
+            Node first = get(col);
+            Node second = get(col + 1);
+
+            if (first.val > second.val) {
+                // swap
+                if (first == head) {
+                    head = second;
+                    first.next = second.next;
+                    second.next = first;
+                } else if (second == tail) {
+                    Node prev = get(col - 1);
+                    prev.next = second;
+                    tail = first;
+                    first.next = null;
+                    second.next = tail;
+                } else {
+                    Node prev = get(col - 1);
+                    prev.next = second;
+                    first.next = second.next;
+                    second.next = first;
+                }
+            }
+            bubbleSort(row, col + 1);
+        } else {
+            bubbleSort(row - 1, 0);
+        }
+    }
+
+
     public static void main(String[] args) {
         SLL first = new SLL();
         SLL second = new SLL();
-        first.insertLast(10);
         first.insertLast(13);
-        first.insertLast(15);
         first.insertLast(16);
+        first.insertLast(10);
         first.insertLast(199);
+        first.insertLast(15);
 
         second.insertLast(14);
         second.insertLast(18);
@@ -204,11 +244,13 @@ public class SLL {
         second.insertLast(74);
 
         first.display();
-        second.display();
+//        second.display();
+        first.bubbleSort();
+        first.display();
 
-        SLL ans  = mergeTwo(first,second);
+//        SLL ans = mergeTwo(first, second);
 
-        ans.display();
+//        ans.display();
 
 //        list.insertLast(1);
 //        list.insertLast(1);
